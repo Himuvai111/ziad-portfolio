@@ -436,7 +436,7 @@ const Footer = () => {
                 { Icon: MessageCircle, href: "https://wa.me/8801705607476" },
                 { Icon: Linkedin, href: "https://www.linkedin.com/in/ziad-al-rashid-7b9370381" }
               ].map(({ Icon, href }, i) => (
-                
+                <a
                   key={i}
                   href={href}
                   target="_blank"
