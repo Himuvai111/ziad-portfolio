@@ -289,15 +289,15 @@ const FullWidthPreview = () => {
 };
 
 const Testimonials = () => {
-  const reviews = [
+    const reviews = [
     {
       text: "Absolute wizard in Premiere Pro. He took our raw, messy footage and turned it into a high-energy promo that doubled our engagement on Instagram. The motion graphics were a massive bonus.",
-      author: "Client Name",
+      author: "Farhan Ahmed",
       role: "Marketing Director"
     },
     {
       text: "The turnaround time was insane, and the edits were flawless. He totally understood the cinematic vibe we were going for with our documentary style footage. Highly recommend.",
-      author: "Client Name",
+      author: "Hamza Rahman",
       role: "Content Creator"
     }
   ];
