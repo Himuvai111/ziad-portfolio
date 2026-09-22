@@ -90,8 +90,8 @@ const VideoItem: React.FC<{ src: string; index: number }> = ({ src, index }) => 
 
 const VideoGallery = () => {
   const videos = [
-    "https://dl.dropboxusercontent.com/scl/fi/eelbkyhutwb9jba2pp9ee/3d-reel.mp4?rlkey=5moxuq3vlk2dg51wawbaw7e2k&st=bzdw2ggn&raw=1",
-    "https://dl.dropboxusercontent.com/scl/fi/eelbkyhutwb9jba2pp9ee/3d-reel.mp4?rlkey=5moxuq3vlk2dg51wawbaw7e2k&st=bzdw2ggn&raw=1",
+    "https://www.dropbox.com/scl/fi/5tugunarhntxflri8rmml/1.mp4?rlkey=sizhaejjirhms2cy4u98rjt1j&st=33aycesr&dl=0",
+    "https://www.dropbox.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=6to3myut&dl=0",
     "https://dl.dropboxusercontent.com/scl/fi/eelbkyhutwb9jba2pp9ee/3d-reel.mp4?rlkey=5moxuq3vlk2dg51wawbaw7e2k&st=bzdw2ggn&raw=1"
   ];
 
@@ -156,34 +156,59 @@ const Arsenal = () => {
 };
 
 const FullWidthPreview = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted1, setIsMuted1] = useState(true);
+  const [isMuted2, setIsMuted2] = useState(true);
 
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="rounded-[2.5rem] overflow-hidden aspect-video bg-zinc-900 shadow-2xl relative group"
-        >
-          <video
-            src="https://dl.dropboxusercontent.com/scl/fi/ezoafrzpvr0j8x3xa739m/project-2.mp4?rlkey=tyhqop357tuk8zfs5ycuqd549&st=202wtugq&raw=1"
-            className="w-full h-full object-cover"
-            autoPlay
-            muted={isMuted}
-            loop
-            playsInline
-          />
-          {/* Local Mute Toggle */}
-          <button
-            onClick={() => setIsMuted(!isMuted)}
-            className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-brand-red"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="rounded-[2.5rem] overflow-hidden aspect-[9/16] bg-zinc-900 shadow-2xl relative group"
           >
-            {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
-          </button>
-        </motion.div>
+            <video
+              src="https://www.dropbox.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=42banmnl&dl=0"
+              className="w-full h-full object-cover"
+              autoPlay
+              muted={isMuted1}
+              loop
+              playsInline
+            />
+            <button
+              onClick={() => setIsMuted1(!isMuted1)}
+              className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              {isMuted1 ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+            </button>
+          </motion.div>
+
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="rounded-[2.5rem] overflow-hidden aspect-[9/16] bg-zinc-900 shadow-2xl relative group"
+          >
+            <video
+              src="https://www.dropbox.com/scl/fi/1etsokkdy9ups6890a8sp/sample-short.mp4?rlkey=epkma3545r52gj0xz77wzxlr6&st=csf3udh0&dl=0"
+              className="w-full h-full object-cover"
+              autoPlay
+              muted={isMuted2}
+              loop
+              playsInline
+            />
+            <button
+              onClick={() => setIsMuted2(!isMuted2)}
+              className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              {isMuted2 ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+            </button>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
