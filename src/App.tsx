@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check, ChevronDown, Mail, Instagram, Linkedin, Volume2, VolumeX, Maximize2, X, MessageCircle } from 'lucide-react';
+
 // --- Components ---
 
 const Navbar = () => {
@@ -21,17 +22,17 @@ const Navbar = () => {
             </a>
           ))}
         </div>
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <a
             href="https://wa.me/8801705607476"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-bold px-5 py-2.5 border border-zinc-200 text-zinc-700 rounded-full hover:border-brand-red hover:text-brand-red transition-colors"
+            className="flex items-center gap-2 text-sm font-bold px-3 sm:px-5 py-2.5 border border-zinc-200 text-zinc-700 rounded-full hover:border-brand-red hover:text-brand-red transition-colors"
           >
             <MessageCircle className="w-4 h-4" />
-            WhatsApp
+            <span className="hidden sm:inline">WhatsApp</span>
           </a>
-          <a href="#contact" className="text-sm font-bold px-5 py-2.5 bg-brand-red text-white rounded-full">
+          <a href="#contact" className="text-sm font-bold px-3 sm:px-5 py-2.5 bg-brand-red text-white rounded-full">
             Let's Talk
           </a>
         </div>
@@ -90,14 +91,14 @@ const VideoItem: React.FC<{ src: string; index: number; onExpand: () => void }> 
       {/* Local Mute Toggle */}
       <button
         onClick={() => setIsMuted(!isMuted)}
-        className="absolute bottom-4 right-4 z-10 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-brand-red"
+        className="absolute bottom-4 right-4 z-10 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-brand-red"
       >
         {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
       </button>
       {/* Expand / Full Preview */}
       <button
         onClick={onExpand}
-        className="absolute bottom-4 left-4 z-10 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-brand-red"
+        className="absolute bottom-4 left-4 z-10 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-brand-red"
       >
         <Maximize2 className="w-5 h-5" />
       </button>
@@ -237,13 +238,13 @@ const FullWidthPreview = () => {
             />
             <button
               onClick={() => setIsMuted1(!isMuted1)}
-              className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
             >
               {isMuted1 ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
             </button>
             <button
               onClick={() => setExpanded(video1)}
-              className="absolute bottom-8 left-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute bottom-8 left-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
             >
               <Maximize2 className="w-6 h-6" />
             </button>
@@ -266,13 +267,13 @@ const FullWidthPreview = () => {
             />
             <button
               onClick={() => setIsMuted2(!isMuted2)}
-              className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
             >
               {isMuted2 ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
             </button>
             <button
               onClick={() => setExpanded(video2)}
-              className="absolute bottom-8 left-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute bottom-8 left-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
             >
               <Maximize2 className="w-6 h-6" />
             </button>
@@ -289,7 +290,7 @@ const FullWidthPreview = () => {
 };
 
 const Testimonials = () => {
-    const reviews = [
+  const reviews = [
     {
       text: "Absolute wizard in Premiere Pro. He took our raw, messy footage and turned it into a high-energy promo that doubled our engagement on Instagram. The motion graphics were a massive bonus.",
       author: "Farhan Ahmed",
@@ -430,7 +431,7 @@ const Footer = () => {
             <a href="mailto:youremail@gmail.com" className="text-xl font-medium hover:text-brand-red transition-colors underline underline-offset-8">
               ziadalrashid007@gmail.com
             </a>
-                        <div className="flex gap-4">
+            <div className="flex gap-4">
               {[
                 { Icon: Instagram, href: "https://www.instagram.com/ziadx007/" },
                 { Icon: MessageCircle, href: "https://wa.me/8801705607476" },
