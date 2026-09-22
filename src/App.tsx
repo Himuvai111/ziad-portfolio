@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Check, ChevronDown, Mail, Instagram, Twitter, Youtube, Volume2, VolumeX } from 'lucide-react';
+import { Check, ChevronDown, Mail, Instagram, Twitter, Youtube, Volume2, VolumeX, Maximize2, X, MessageCircle } from 'lucide-react';
 
 // --- Components ---
 
@@ -22,9 +22,20 @@ const Navbar = () => {
             </a>
           ))}
         </div>
-        <a href="#contact" className="hidden sm:block text-sm font-bold px-5 py-2.5 bg-brand-red text-white rounded-full">
-          Let's Talk
-        </a>
+        <div className="hidden sm:flex items-center gap-3">
+          <a
+            href="https://wa.me/8801705607476"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm font-bold px-5 py-2.5 border border-zinc-200 text-zinc-700 rounded-full hover:border-brand-red hover:text-brand-red transition-colors"
+          >
+            <MessageCircle className="w-4 h-4" />
+            WhatsApp
+          </a>
+          <a href="#contact" className="text-sm font-bold px-5 py-2.5 bg-brand-red text-white rounded-full">
+            Let's Talk
+          </a>
+        </div>
       </div>
     </nav>
   );
@@ -58,7 +69,7 @@ const Hero = () => {
   );
 };
 
-const VideoItem: React.FC<{ src: string; index: number }> = ({ src, index }) => {
+const VideoItem: React.FC<{ src: string; index: number; onExpand: () => void }> = ({ src, index, onExpand }) => {
   const [isMuted, setIsMuted] = useState(true);
 
   return (
@@ -84,11 +95,49 @@ const VideoItem: React.FC<{ src: string; index: number }> = ({ src, index }) => 
       >
         {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
       </button>
+      {/* Expand / Full Preview */}
+      <button
+        onClick={onExpand}
+        className="absolute bottom-4 left-4 z-10 w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-brand-red"
+      >
+        <Maximize2 className="w-5 h-5" />
+      </button>
+    </motion.div>
+  );
+};
+
+const VideoLightbox: React.FC<{ src: string; onClose: () => void }> = ({ src, onClose }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-6"
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-red transition-colors"
+      >
+        <X className="w-6 h-6" />
+      </button>
+      <motion.video
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        src={src}
+        className="max-h-[90vh] max-w-full rounded-2xl shadow-2xl"
+        autoPlay
+        controls
+        loop
+        onClick={(e) => e.stopPropagation()}
+      />
     </motion.div>
   );
 };
 
 const VideoGallery = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   const videos = [
     "https://dl.dropboxusercontent.com/scl/fi/5tugunarhntxflri8rmml/1.mp4?rlkey=sizhaejjirhms2cy4u98rjt1j&st=33aycesr&raw=1",
     "https://dl.dropboxusercontent.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=6to3myut&raw=1",
@@ -100,10 +149,15 @@ const VideoGallery = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {videos.map((src, index) => (
-            <VideoItem key={index} src={src} index={index} />
+            <VideoItem key={index} src={src} index={index} onExpand={() => setOpenIndex(index)} />
           ))}
         </div>
       </div>
+      <AnimatePresence>
+        {openIndex !== null && (
+          <VideoLightbox src={videos[openIndex]} onClose={() => setOpenIndex(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
