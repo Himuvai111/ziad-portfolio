@@ -212,6 +212,10 @@ const Arsenal = () => {
 const FullWidthPreview = () => {
   const [isMuted1, setIsMuted1] = useState(true);
   const [isMuted2, setIsMuted2] = useState(true);
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  const video1 = "https://dl.dropboxusercontent.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=42banmnl&raw=1";
+  const video2 = "https://dl.dropboxusercontent.com/scl/fi/1etsokkdy9ups6890a8sp/sample-short.mp4?rlkey=epkma3545r52gj0xz77wzxlr6&st=csf3udh0&raw=1";
 
   return (
     <section className="py-20 bg-white">
@@ -225,7 +229,7 @@ const FullWidthPreview = () => {
             className="rounded-[2.5rem] overflow-hidden aspect-[9/16] bg-zinc-900 shadow-2xl relative group"
           >
             <video
-              src="https://dl.dropboxusercontent.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=42banmnl&raw=1"
+              src={video1}
               className="w-full h-full object-cover"
               autoPlay
               muted={isMuted1}
@@ -238,6 +242,12 @@ const FullWidthPreview = () => {
             >
               {isMuted1 ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
             </button>
+            <button
+              onClick={() => setExpanded(video1)}
+              className="absolute bottom-8 left-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <Maximize2 className="w-6 h-6" />
+            </button>
           </motion.div>
 
           <motion.div
@@ -248,7 +258,7 @@ const FullWidthPreview = () => {
             className="rounded-[2.5rem] overflow-hidden aspect-[9/16] bg-zinc-900 shadow-2xl relative group"
           >
             <video
-              src="https://dl.dropboxusercontent.com/scl/fi/1etsokkdy9ups6890a8sp/sample-short.mp4?rlkey=epkma3545r52gj0xz77wzxlr6&st=csf3udh0&raw=1"
+              src={video2}
               className="w-full h-full object-cover"
               autoPlay
               muted={isMuted2}
@@ -261,9 +271,20 @@ const FullWidthPreview = () => {
             >
               {isMuted2 ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
             </button>
+            <button
+              onClick={() => setExpanded(video2)}
+              className="absolute bottom-8 left-8 z-10 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <Maximize2 className="w-6 h-6" />
+            </button>
           </motion.div>
         </div>
       </div>
+      <AnimatePresence>
+        {expanded && (
+          <VideoLightbox src={expanded} onClose={() => setExpanded(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
