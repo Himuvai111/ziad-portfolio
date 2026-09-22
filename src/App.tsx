@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Check, ChevronDown, Mail, Instagram, Twitter, Youtube, Volume2, VolumeX, Maximize2, X, MessageCircle } from 'lucide-react';
-
+import { Check, ChevronDown, Mail, Instagram, Linkedin, Volume2, VolumeX, Maximize2, X, MessageCircle } from 'lucide-react';
 // --- Components ---
 
 const Navbar = () => {
@@ -431,9 +430,19 @@ const Footer = () => {
             <a href="mailto:youremail@gmail.com" className="text-xl font-medium hover:text-brand-red transition-colors underline underline-offset-8">
               ziadalrashid007@gmail.com
             </a>
-            <div className="flex gap-4">
-              {[Instagram, Twitter, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center hover:bg-brand-red hover:text-white transition-all">
+                        <div className="flex gap-4">
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/ziadx007/" },
+                { Icon: MessageCircle, href: "https://wa.me/8801705607476" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/in/ziad-al-rashid-7b9370381" }
+              ].map(({ Icon, href }, i) => (
+                
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center hover:bg-brand-red hover:text-white transition-all"
+                >
                   <Icon className="w-5 h-5" />
                 </a>
               ))}
