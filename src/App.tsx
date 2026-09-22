@@ -90,8 +90,8 @@ const VideoItem: React.FC<{ src: string; index: number }> = ({ src, index }) => 
 
 const VideoGallery = () => {
   const videos = [
-    "https://www.dropbox.com/scl/fi/5tugunarhntxflri8rmml/1.mp4?rlkey=sizhaejjirhms2cy4u98rjt1j&st=33aycesr&dl=0",
-    "https://www.dropbox.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=6to3myut&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/5tugunarhntxflri8rmml/1.mp4?rlkey=sizhaejjirhms2cy4u98rjt1j&st=33aycesr&raw=1",
+    "https://dl.dropboxusercontent.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=6to3myut&raw=1",
     "https://dl.dropboxusercontent.com/scl/fi/eelbkyhutwb9jba2pp9ee/3d-reel.mp4?rlkey=5moxuq3vlk2dg51wawbaw7e2k&st=bzdw2ggn&raw=1"
   ];
 
@@ -171,7 +171,7 @@ const FullWidthPreview = () => {
             className="rounded-[2.5rem] overflow-hidden aspect-[9/16] bg-zinc-900 shadow-2xl relative group"
           >
             <video
-              src="https://www.dropbox.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=42banmnl&dl=0"
+              src="https://dl.dropboxusercontent.com/scl/fi/gvat1tgd2imh0zyy5v3rm/portfolio-3.mp4?rlkey=xbg3a9fso7o5zcg6lbhmqhz6m&st=42banmnl&raw=1"
               className="w-full h-full object-cover"
               autoPlay
               muted={isMuted1}
@@ -194,7 +194,7 @@ const FullWidthPreview = () => {
             className="rounded-[2.5rem] overflow-hidden aspect-[9/16] bg-zinc-900 shadow-2xl relative group"
           >
             <video
-              src="https://www.dropbox.com/scl/fi/1etsokkdy9ups6890a8sp/sample-short.mp4?rlkey=epkma3545r52gj0xz77wzxlr6&st=csf3udh0&dl=0"
+              src="https://dl.dropboxusercontent.com/scl/fi/1etsokkdy9ups6890a8sp/sample-short.mp4?rlkey=epkma3545r52gj0xz77wzxlr6&st=csf3udh0&raw=1"
               className="w-full h-full object-cover"
               autoPlay
               muted={isMuted2}
